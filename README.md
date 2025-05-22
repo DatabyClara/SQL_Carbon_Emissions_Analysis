@@ -5,9 +5,7 @@ The dataset, sourced from [Nature.com](https://www.nature.com/articles/s41597-02
 
 ### Tools & Languages:
 ![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=sql&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
-
-![Python](https://img.shields.io/badge/Python-3670A0?logo=python&logoColor=white&style=for-the-badge)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white) ![Python](https://img.shields.io/badge/Python-3670A0?logo=python&logoColor=white&style=for-the-badge)
 ![Plotly Express](https://img.shields.io/badge/Plotly-Orange?logo=plotly&logoColor=white&style=for-the-badge)
 
 
