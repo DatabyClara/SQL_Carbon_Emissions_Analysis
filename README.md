@@ -52,13 +52,14 @@ SELECT * FROM product_emissions
 LIMIT 5;
 ```
 Answer:
-| index | id           | year | product_name                                                 | company             | country | industry_group                    | weight_kg | carbon_footprint_pcf | upstream_percent_total_pcf | operations_percent_total_pcf | downstream_percent_total_pcf |
-|-------|--------------|------|---------------------------------------------------------------|---------------------|---------|-----------------------------------|-----------|-----------------------|-----------------------------|-------------------------------|-------------------------------|
-| 0     | 10056-1-2014 | 2014 | Frosted Flakes(R) Cereal                                     | Kellogg Company     | USA     | Food, Beverage & Tobacco          | 0.7485    | 2                     | 57.50%                      | 30.00%                        | 12.50%                        |
-| 1     | 10056-1-2015 | 2015 | Frosted Flakes, 23 oz, produced in Lancaster, PA (one carton) | Kellogg Company     | USA     | Food & Beverage Processing        | 0.7485    | 2                     | 57.50%                      | 30.00%                        | 12.50%                        |
-| 2     | 10222-1-2013 | 2013 | Office Chair                                                 | KNOLL INC           | USA     | Capital Goods                     | 20.68     | 72.54                 | 80.63%                      | 17.36%                        | 2.01%                         |
-| 3     | 10261-1-2017 | 2017 | Multifunction Printers                                       | Konica Minolta, Inc.| Japan   | Technology Hardware & Equipment  | 110       | 1488                  | 30.65%                      | 5.51%                         | 63.84%                        |
-| 4     | 10261-2-2017 | 2017 | Multifunction Printers                                       | Konica Minolta, Inc.| Japan   | Technology Hardware & Equipment  | 110       | 1818                  | 25.08%                      | 4.51%                         | 70.41%                        |
+```
+company                                product_name                        carbon_footprint_pcf   upstream_percent_total_pcf                        operations_percent_total_pcf                      downstream_percent_total_pcf
+Mitsubishi Gas Chemical Company, Inc.  TCDE                                99075                  64.95%                                            34.40%                                            0.66%
+Mitsubishi Gas Chemical Company, Inc.  Super-pure hydrogen peroxide        6469                   N/a (product with insufficient stage-level data)  N/a (product with insufficient stage-level data)  N/a (product with insufficient stage-level data)
+Mitsubishi Gas Chemical Company, Inc.  Paraformaldehyde                    200                    56.50%                                            29.93%                                            13.57%
+Mitsubishi Gas Chemical Company, Inc.  ELM                                 139                    7.13%                                             3.77%                                             89.10%
+Mitsubishi Gas Chemical Company, Inc.  Methacrylic acid                    71                     64.44%                                            34.13%                                            1.43%
+```
 
 **-- Identify available time range**
 ```sql
@@ -110,14 +111,14 @@ ORDER BY carbon_footprint_pcf DESC
 LIMIT 5;
 ```
 Answer: 
-| company                                  | product_name                  | carbon_footprint_pcf | upstream_percent_total_pcf                        | operations_percent_total_pcf                      | downstream_percent_total_pcf                      |
-|------------------------------------------|-------------------------------|----------------------|---------------------------------------------------|---------------------------------------------------|----------------------------------------------------|
-| Mitsubishi Gas Chemical Company, Inc.    | TCDE                          | 99075                | 64.95%                                            | 34.40%                                            | 0.66%                                              |
-| Mitsubishi Gas Chemical Company, Inc.    | Super-pure hydrogen peroxide  | 6469                 | N/a (product with insufficient stage-level data)  | N/a (product with insufficient stage-level data)  | N/a (product with insufficient stage-level data)   |
-| Mitsubishi Gas Chemical Company, Inc.    | Paraformaldehyde              | 200                  | 56.50%                                            | 29.93%                                            | 13.57%                                             |
-| Mitsubishi Gas Chemical Company, Inc.    | ELM                           | 139                  | 7.13%                                             | 3.77%                                             | 89.10%                                             |
-| Mitsubishi Gas Chemical Company, Inc.    | Methacrylic acid              | 71                   | 64.44%                                            | 34.13%                                            | 1.43%                                              |
-
+```
+company                                product_name                        carbon_footprint_pcf   upstream_percent_total_pcf                        operations_percent_total_pcf                      downstream_percent_total_pcf 
+Mitsubishi Gas Chemical Company, Inc.  TCDE                                99075                  64.95%                                            34.40%                                            0.66%
+Mitsubishi Gas Chemical Company, Inc.  Super-pure hydrogen peroxide        6469                   N/a (product with insufficient stage-level data)  N/a (product with insufficient stage-level data)  N/a (product with insufficient stage-level data)
+Mitsubishi Gas Chemical Company, Inc.  Paraformaldehyde                    200                    56.50%                                            29.93%                                            13.57%
+Mitsubishi Gas Chemical Company, Inc.  ELM                                 139                    7.13%                                             3.77%                                             89.10%
+Mitsubishi Gas Chemical Company, Inc.  Methacrylic acid                    71                     64.44%                                            34.13%                                            1.43%
+```
 
 **-- Country coverage**
 ```sql
