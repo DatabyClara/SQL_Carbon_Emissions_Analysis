@@ -60,7 +60,7 @@ Mitsubishi Gas Chemical Company, Inc.  Paraformaldehyde                    200  
 Mitsubishi Gas Chemical Company, Inc.  ELM                                 139                    7.13%                                             3.77%                                             89.10%
 Mitsubishi Gas Chemical Company, Inc.  Methacrylic acid                    71                     64.44%                                            34.13%                                            1.43%
 ```
-
+---
 **-- Identify available time range**
 ```sql
 SELECT DISTINCT year AS available_time_range 
@@ -76,6 +76,7 @@ Answer:
 | 2016                 |
 | 2017                 |
 
+---
 **--  Top Industry groups emitters in 2017**
 ```sql
 SELECT industry_group,
@@ -95,6 +96,7 @@ Answer:
 | Commercial & Professional Services  | 740.6           |
 | Software & Services                 | 690             |
 
+---
 **-- Lifecycle emission breakdown considering only data from Mitsubishi in 2017**
 ```sql
 SELECT company,
@@ -120,6 +122,7 @@ Mitsubishi Gas Chemical Company, Inc.  ELM                                 139  
 Mitsubishi Gas Chemical Company, Inc.  Methacrylic acid                    71                     64.44%                                            34.13%                                            1.43%
 ```
 
+---
 **-- Country coverage**
 ```sql
 SELECT country,
@@ -129,6 +132,7 @@ GROUP BY country
 ORDER BY total_footprint DESC;
 ```
 
+---
 **-- Industry group with highest emissions in Spain**
 ```sql
 SELECT year,
@@ -168,6 +172,7 @@ px.bar(total_footprint_df, x='country', y='total_footprint', title="Total Carbon
 Answer:
 <img src="https://github.com/user-attachments/assets/9dcb1bc0-c5bc-410d-9bbe-b0f2c3901bf3" width="600"/>
 
+---
 **- Top industry groups emitters in 2017 visualization:**
 ```python
 px.bar(df_ind_total_emissions_2017, x = "industry_group", y ="total_emissions", color="industry_group", title="Total Carbon Footprint by Industry Sector in 2017",
@@ -178,6 +183,6 @@ px.bar(df_ind_total_emissions_2017, x = "industry_group", y ="total_emissions", 
 ```
 <img src="https://github.com/user-attachments/assets/fc501d43-9602-4005-b52a-b89e04d7cf09" width="600"/>
 
-
+---
 # Final Thoughts:
 This project highlights how SQL can be used to extract meaningful insights from carbon emissions data at the product level. Understanding where emissions are concentrated helps guide more effective decarbonization strategies and supports data-driven environmental decision-making.
