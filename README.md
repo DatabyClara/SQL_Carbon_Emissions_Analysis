@@ -48,51 +48,133 @@ Emission breakdown: 60% upstream, 34.4% operations, and less than 1% downstream.
 # 🔍 Sample SQL queries
 **-- Explore database**
 ```sql
-SELECT * FROM product_emissions;
+SELECT * FROM product_emissions
+LIMIT 5;
 ```
-**-- Identify available time range**
+Answer:
+| index | id           | year | product_name                                                 | company             | country | industry_group                    | weight_kg | carbon_footprint_pcf | upstream_percent_total_pcf | operations_percent_total_pcf | downstream_percent_total_pcf |
+|-------|--------------|------|---------------------------------------------------------------|---------------------|---------|-----------------------------------|-----------|-----------------------|-----------------------------|-------------------------------|-------------------------------|
+| 0     | 10056-1-2014 | 2014 | Frosted Flakes(R) Cereal                                     | Kellogg Company     | USA     | Food, Beverage & Tobacco          | 0.7485    | 2                     | 57.50%                      | 30.00%                        | 12.50%                        |
+| 1     | 10056-1-2015 | 2015 | Frosted Flakes, 23 oz, produced in Lancaster, PA (one carton) | Kellogg Company     | USA     | Food & Beverage Processing        | 0.7485    | 2                     | 57.50%                      | 30.00%                        | 12.50%                        |
+| 2     | 10222-1-2013 | 2013 | Office Chair                                                 | KNOLL INC           | USA     | Capital Goods                     | 20.68     | 72.54                 | 80.63%                      | 17.36%                        | 2.01%                         |
+| 3     | 10261-1-2017 | 2017 | Multifunction Printers                                       | Konica Minolta, Inc.| Japan   | Technology Hardware & Equipment  | 110       | 1488                  | 30.65%                      | 5.51%                         | 63.84%                        |
+| 4     | 10261-2-2017 | 2017 | Multifunction Printers                                       | Konica Minolta, Inc.| Japan   | Technology Hardware & Equipment  | 110       | 1818                  | 25.08%                      | 4.51%                         | 70.41%                        |
 
-<img src="https://github.com/user-attachments/assets/4cf75d90-2099-4a97-bc15-277613deda47" width="400"/>
+**-- Identify available time range**
+```sql
+SELECT DISTINCT year AS available_time_range 
+FROM product_emissions
+ORDER BY year;
+```
+Answer:
+| available_time_range |
+|----------------------|
+| 2013                 |
+| 2014                 |
+| 2015                 |
+| 2016                 |
+| 2017                 |
 
 **--  Top Industry groups emitters in 2017**
+```sql
+SELECT industry_group,
+	ROUND(SUM(carbon_footprint_pcf),2) AS total_emissions
+FROM product_emissions
+WHERE year = 2017
+GROUP BY industry_group
+ORDER BY total_emissions DESC;
+```
+Answer:
+| industry_group                      | total_emissions |
+|-------------------------------------|-----------------|
+| Materials                           | 107129          |
+| Capital Goods                       | 94942.6724      |
+| Technology Hardware & Equipment     | 21865.086       |
+| Food, Beverage & Tobacco            | 3161.47         |
+| Commercial & Professional Services  | 740.6           |
+| Software & Services                 | 690             |
 
-<img src="https://github.com/user-attachments/assets/0f132917-f780-492d-9d00-9ccef181a365" width="400"/>
-
-Result:
-
-<img src="https://github.com/user-attachments/assets/c37a6e14-ec20-410c-a398-de0a06e5708d" width="400"/>
-
-
-**-- Lifecycle emission breakdown**
-
-<img src="https://github.com/user-attachments/assets/e0dd7559-d472-4a9f-a09a-50d46c047ac0" width="400"/>
-
-Result: 
-
-![image](https://github.com/user-attachments/assets/6c72f66b-653c-4c04-b71f-8b896d1f1886)
+**-- Lifecycle emission breakdown considering only data from Mitsubishi in 2017**
+```sql
+SELECT company,
+	product_name,
+	carbon_footprint_pcf,
+	upstream_percent_total_pcf,
+	operations_percent_total_pcf,
+	downstream_percent_total_pcf
+FROM product_emissions
+WHERE year = 2017 
+	AND industry_group = 'Materials'
+	AND company = 'Mitsubishi Gas Chemical Company, Inc.'
+ORDER BY carbon_footprint_pcf DESC
+LIMIT 5;
+```
+Answer: 
+| company                                  | product_name                  | carbon_footprint_pcf | upstream_percent_total_pcf                        | operations_percent_total_pcf                      | downstream_percent_total_pcf                      |
+|------------------------------------------|-------------------------------|----------------------|---------------------------------------------------|---------------------------------------------------|----------------------------------------------------|
+| Mitsubishi Gas Chemical Company, Inc.    | TCDE                          | 99075                | 64.95%                                            | 34.40%                                            | 0.66%                                              |
+| Mitsubishi Gas Chemical Company, Inc.    | Super-pure hydrogen peroxide  | 6469                 | N/a (product with insufficient stage-level data)  | N/a (product with insufficient stage-level data)  | N/a (product with insufficient stage-level data)   |
+| Mitsubishi Gas Chemical Company, Inc.    | Paraformaldehyde              | 200                  | 56.50%                                            | 29.93%                                            | 13.57%                                             |
+| Mitsubishi Gas Chemical Company, Inc.    | ELM                           | 139                  | 7.13%                                             | 3.77%                                             | 89.10%                                             |
+| Mitsubishi Gas Chemical Company, Inc.    | Methacrylic acid              | 71                   | 64.44%                                            | 34.13%                                            | 1.43%                                              |
 
 
 **-- Country coverage**
-
-<img src="https://github.com/user-attachments/assets/730c03aa-3cea-43fa-85b2-9d4906f9d873" width="400"/>
+```sql
+SELECT country,
+	ROUND(SUM(carbon_footprint_pcf),2) AS total_footprint
+FROM product_emissions
+GROUP BY country
+ORDER BY total_footprint DESC;
+```
 
 **-- Industry group with highest emissions in Spain**
-
-<img src="https://github.com/user-attachments/assets/06936405-82d2-43f0-9c34-cf4d2d2e0ace" width="400"/>
+```sql
+SELECT year,
+    company, 
+    industry_group,
+    SUM(carbon_footprint_pcf) AS total_carbon_footprint
+FROM product_emissions
+WHERE country = 'Spain'
+GROUP BY year,
+    company,
+    industry_group
+ORDER BY total_carbon_footprint DESC
+LIMIT 5;
+```
+Answer:
+| year | company                                          | industry_group                         | total_carbon_footprint |
+|------|--------------------------------------------------|----------------------------------------|-------------------------|
+| 2015 | Gamesa Corporación Tecnológica, S.A.            | Electrical Equipment and Machinery     | 9778464                 |
+| 2016 | Compañía Española de Petróleos, S.A.U. CEPSA    | Energy                                 | 6999                    |
+| 2016 | Agraz                                            | Food, Beverage & Tobacco               | 340.23                  |
+| 2015 | Crimidesa                                        | Chemicals                              | 180                     |
+| 2016 | Crimidesa                                        | Materials                              | 140                     |
 
 
 # 🔍 Sample Python Visualization:
 
 **- Top emitters visualization:**
+```python
+import plotly.express as px
 
-<img src="https://github.com/user-attachments/assets/a0b4795f-06bb-42a7-a26b-f77a7e69c171" width="600"/>
-
+px.bar(total_footprint_df, x='country', y='total_footprint', title="Total Carbon emission by country",
+       labels={
+        "country": "Country",
+        "total_footprint": "Total Emissions (tCO₂e)"
+    })
+```
+Answer:
 <img src="https://github.com/user-attachments/assets/9dcb1bc0-c5bc-410d-9bbe-b0f2c3901bf3" width="600"/>
 
 **- Top industry groups emitters in 2017 visualization:**
-
-<img src="https://github.com/user-attachments/assets/9edbaf81-6a54-42d2-b677-28e76ac9e0a0" width="600"/>
-
+```python
+px.bar(df_ind_total_emissions_2017, x = "industry_group", y ="total_emissions", color="industry_group", title="Total Carbon Footprint by Industry Sector in 2017",
+       labels={
+        "total_emissions": "Total Emissions (tCO₂e)",
+        "industry_group": "Industry sector"
+    })
+```
 <img src="https://github.com/user-attachments/assets/fc501d43-9602-4005-b52a-b89e04d7cf09" width="600"/>
 
 
