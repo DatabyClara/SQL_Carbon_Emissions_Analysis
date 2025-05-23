@@ -47,9 +47,9 @@ Emission breakdown: 60% upstream, 34.4% operations, and less than 1% downstream.
 
 # 🔍 Sample SQL queries
 **-- Explore database**
-
+```sql
 SELECT * FROM product_emissions;
-
+```
 **-- Identify available time range**
 
 <img src="https://github.com/user-attachments/assets/4cf75d90-2099-4a97-bc15-277613deda47" width="400"/>
