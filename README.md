@@ -24,9 +24,7 @@ Analyze Product Carbon Footprints (PCFs), which is the amount of greenhouse gas 
 **Most recent data shows (2017):**
 - Materials and Capital Goods were the top emitting industries in 2017.
 - The Food, Beverages & Tobacco industry showed a consistent reduction in emissions over time, even with consistent data reporting.
-- The product with the highest emissions recorded in 2017 in this dataset was TCDE, from the Materials industry. Lifecycle analysis for this product showed that most emissions occurred in the upstream stage.
-
-Emission breakdown: 60% upstream, 34.4% operations, and less than 1% downstream.
+- The product with the highest emissions recorded in 2017 in this dataset was TCDE, from the Materials industry. Lifecycle analysis for this product showed that most emissions occurred in the upstream stage. Emission breakdown: 60% upstream, 34.4% operations, and less than 1% downstream.
 
 **Over the entire study period (2013–2017):**
 - The top three emitting industry sectors in this dataset were Electrical Equipment and Machinery, Automobiles & Components, and Materials.
@@ -40,7 +38,7 @@ Emission breakdown: 60% upstream, 34.4% operations, and less than 1% downstream.
 - Encourage more companies to share their emissions data and keep updating it regularly to have accurate information.
 
 ### 📈 Potential Extensions
--Compare carbon footprints across similar products to highlight best practices.
+- Compare carbon footprints across similar products to highlight best practices.
 - Perform time series forecasting to predict future emissions and evaluate intervention scenarios.
 - Collect more recent data to monitor ongoing trends and evaluate the effectiveness of emission reduction efforts.
 - Develop targeted decarbonization strategies for upstream, operations, and downstream stages.
