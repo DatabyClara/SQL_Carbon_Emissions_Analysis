@@ -1,6 +1,4 @@
 # Carbon Emissions Analysis Using SQL
-All SQL queries applied in this project are available in the "SQL_Queries.sql" section above. However, a small sample of SQL queries will be displayed at the end of this page.
-
 The dataset, sourced from [Nature.com](https://www.nature.com/articles/s41597-022-01178-9), contains emissions data from 2013 to 2017 for various products, industries, companies, and countries, categorized by lifecycle stage (upstream, operations, and downstream). The data was collected through the Carbon Disclosure Project (CDP), where companies voluntarily reported their PCFs in response to CDP's Climate Change Questionnaire.
 
 ### Tools & Languages:
