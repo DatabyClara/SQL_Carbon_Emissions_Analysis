@@ -21,18 +21,20 @@ Analyze Product Carbon Footprints (PCFs), which is the amount of greenhouse gas 
 
 ### 📊 Results:
 
-**Most recent data shows:**
+**Most recent data shows (2017):**
 - Materials and Capital Goods were the top emitting industries in 2017.
 - The Food, Beverages & Tobacco industry showed a consistent reduction in emissions over time, even with consistent data reporting.
-- The company that had the most emissions in 2017 was Mitsubishi Gas Chemical, located in Japan, due to a product (TCDE) in the Materials industry group, which generated the highest emissions during the upstream stage.
+- The product with the highest emissions recorded in 2017 in this dataset was TCDE, from the Materials industry. Lifecycle analysis for this product showed that most emissions occurred in the upstream stage.
 Emission breakdown: 60% upstream, 34.4% operations, and less than 1% downstream.
 
-**Over the entire study period:**
-- Spain reported the highest total emissions, mainly driven by the Electrical Equipment and Machinery sector in 2015.
-- Belgium had only one company reporting emissions, Solvay S.A., indicating strong commitment, transparency, and sector leadership. This provides the company with a competitive sustainability advantage within the country.
+**Over the entire study period (2013–2017):**
+- Spain had the highest total emissions in this dataset, mainly due to the Electrical Equipment and Machinery sector in 2015.
+- Germany, Japan, and the U.S. followed as top emitters.
+- China and India reported relatively low emissions, likely due to data gaps or underreporting.
+- Belgium had only one company reporting product-level emissions, highlighting its leadership and transparency in sustainability.
 
 ### 📝 Recommendations
--Prioritize policies and investments to decarbonize the Materials and Capital Goods industries, as they were the largest emitters in 2017.
+- Prioritize policies and investments to decarbonize the Materials and Capital Goods industries, as they were the largest emitters in 2017.
 - Pursue cleaner technologies and sustainable production processes for the products with the highest carbon emissions.
 - Understand the key products within the target industries (e.g., Materials) to develop more efficient and scalable decarbonization solutions.
 - Encourage more companies to share their emissions data and keep updating it regularly to have accurate information.
