@@ -1,7 +1,7 @@
 # Carbon Emissions Analysis Using SQL
 All SQL queries applied in this project are available in the "SQL_Queries.sql" section above. However, a small sample of SQL queries will be displayed at the end of this page.
 
-The dataset, sourced from [Nature.com](https://www.nature.com/articles/s41597-022-01178-9), contains emissions data from 2013 to 2017 for various products, industries, companies, and countries, categorized by lifecycle stage (upstream, operations, and downstream).
+The dataset, sourced from [Nature.com](https://www.nature.com/articles/s41597-022-01178-9), contains emissions data from 2013 to 2017 for various products, industries, companies, and countries, categorized by lifecycle stage (upstream, operations, and downstream). The data was collected through the Carbon Disclosure Project (CDP), where companies voluntarily reported their PCFs in response to CDP's Climate Change Questionnaire.
 
 ### Tools & Languages:
 ![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=sql&logoColor=white)
@@ -28,10 +28,9 @@ Analyze Product Carbon Footprints (PCFs), which is the amount of greenhouse gas 
 Emission breakdown: 60% upstream, 34.4% operations, and less than 1% downstream.
 
 **Over the entire study period (2013–2017):**
-- Spain had the highest total emissions in this dataset, mainly due to the Electrical Equipment and Machinery sector in 2015.
-- Germany, Japan, and the U.S. followed as top emitters.
+- The top three emitting industry sectors in this dataset were Electrical Equipment and Machinery, Automobiles & Components, and Materials.
+- Spain had the highest total emissions in this dataset, mainly due to the Electrical Equipment and Machinery sector in 2015. Germany, Japan, and the U.S. followed as top emitters.
 - China and India reported relatively low emissions, likely due to data gaps or underreporting.
-- Belgium had only one company reporting product-level emissions, highlighting its leadership and transparency in sustainability.
 
 ### 📝 Recommendations
 - Prioritize policies and investments to decarbonize the Materials and Capital Goods industries, as they were the largest emitters in 2017.
