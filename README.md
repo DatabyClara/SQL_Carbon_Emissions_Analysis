@@ -97,9 +97,34 @@ Answer:
 | Software & Services                 | 690             |
 
 ---
-**-- Lifecycle emission breakdown considering only data from Mitsubishi in 2017**
+**-- Lifecycle emission breakdown considering only 2017 data**
 ```sql
 SELECT company,
+	industry_group,
+	product_name,
+	carbon_footprint_pcf,
+	upstream_percent_total_pcf,
+	operations_percent_total_pcf,
+	downstream_percent_total_pcf
+FROM product_emissions
+WHERE year = 2017 
+ORDER BY carbon_footprint_pcf DESC
+LIMIT 5;
+```
+Answer: 
+```
+company                                 industry_group   product_name                      carbon_footprint_pcf   upstream_percent_total_pcf                        operations_percent_total_pcf                        downstream_percent_total_pcf                     
+Mitsubishi Gas Chemical Company, Inc.   Materials        TCDE                              99075                  64.95%                                            34.40%                                              0.66%                                           
+Daikin Industries, Ltd.                 Capital Goods    Commercial Air Conditioner        51066                  0.98%                                             0.13%                                               98.88%                                           
+Daikin Industries, Ltd.                 Capital Goods    Light commercial Air Conditioner  39653                  0.70%                                             0.10%                                               99.21%                                           
+Mitsubishi Gas Chemical Company, Inc.   Materials        Super-pure hydrogen peroxide      6469                    N/a (product with insufficient stage-level data) N/a (product with insufficient stage-level data)    N/a (product with insufficient stage-level data)    
+Daikin Industries, Ltd.                 Capital Goods    Residential Air Conditioner       4218                   3.96%                                             0.55%                                               95.50%     
+```
+
+---
+**-- Lifecycle emission breakdown considering only Materials industry data in 2017**
+```sql
+SELECT  company,
 	product_name,
 	carbon_footprint_pcf,
 	upstream_percent_total_pcf,
@@ -108,18 +133,18 @@ SELECT company,
 FROM product_emissions
 WHERE year = 2017 
 	AND industry_group = 'Materials'
-	AND company = 'Mitsubishi Gas Chemical Company, Inc.'
 ORDER BY carbon_footprint_pcf DESC
 LIMIT 5;
 ```
 Answer: 
 ```
-company                                product_name                        carbon_footprint_pcf   upstream_percent_total_pcf                        operations_percent_total_pcf                      downstream_percent_total_pcf 
-Mitsubishi Gas Chemical Company, Inc.  TCDE                                99075                  64.95%                                            34.40%                                            0.66%
-Mitsubishi Gas Chemical Company, Inc.  Super-pure hydrogen peroxide        6469                   N/a (product with insufficient stage-level data)  N/a (product with insufficient stage-level data)  N/a (product with insufficient stage-level data)
-Mitsubishi Gas Chemical Company, Inc.  Paraformaldehyde                    200                    56.50%                                            29.93%                                            13.57%
-Mitsubishi Gas Chemical Company, Inc.  ELM                                 139                    7.13%                                             3.77%                                             89.10%
-Mitsubishi Gas Chemical Company, Inc.  Methacrylic acid                    71                     64.44%                                            34.13%                                            1.43%
+company                               industry_group  product_name                                                       carbon_footprint_pcf  upstream_percent_total_pcf                         operations_percent_total_pcf                        downstream_percent_total_pcf    
+Mitsubishi Gas Chemical Company, Inc. Materials       TCDE                                                               99075                 64.95%                                             34.40%                                              0.66%  
+Mitsubishi Gas Chemical Company, Inc. Materials       Super-pure hydrogen peroxide                                       6469                  N/a (product with insufficient stage-level data)   N/a (product with insufficient stage-level data)    N/a (product with insufficient stage-level data) 
+Tata Chemicals                        Materials       Soda Ash                                                           870                   N/a (product with insufficient stage-level data)   N/a (product with insufficient stage-level data)    N/a (product with insufficient stage-level data) 
+Mitsubishi Gas Chemical Company, Inc. Materials       Paraformaldehyde                                                   200                   56.50%                                             29.93%                                              13.57% 
+Johnson Matthey                       Materials       Complete catalyst system for diesel-powered passenger car exhaust  188                   N/a (product with insufficient stage-level data)   N/a (product with insufficient stage-level data)    N/a (product with insufficient stage-level data)  
+
 ```
 
 ---
