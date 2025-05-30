@@ -33,6 +33,7 @@ Analyze Product Carbon Footprints (PCFs), which is the amount of greenhouse gas 
 - Prioritize policies and investments to decarbonize the Materials and Capital Goods industries, as they were the largest emitters in 2017.
 - Pursue cleaner technologies and sustainable production processes for the products with the highest carbon emissions.
 - Understand the key products within the target industries (e.g., Materials) to develop more efficient and scalable decarbonization solutions.
+- Integrate environmental performance of raw materials and suppliers into procurement decisions to drive decarbonization across the supply chain by prioritizing low-impact inputs and sustainable sourcing.
 - Encourage more companies to share their emissions data and keep updating it regularly to have accurate information.
 
 ### 📈 Potential Extensions
